@@ -30,7 +30,13 @@
 </head>
 <body class="h-screen flex flex-col overflow-hidden">
     <header class="bg-blue-800 text-white p-4 shadow-md no-print shrink-0 flex justify-between items-center">
-        <h1 class="text-2xl font-bold">4. รายงานแยกประเภท ประจำปีงบประมาณ แบบแสดงรายเดือน</h1>
+        <div class="flex items-center gap-3">
+            <a href="https://financenangrong.github.io/financial-system/" class="text-white hover:bg-blue-700 focus:outline-none p-2 rounded transition-colors flex items-center gap-1" title="ย้อนกลับ">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span class="hidden sm:inline font-medium text-sm">ย้อนกลับ</span>
+            </a>
+            <h1 class="text-2xl font-bold">4. รายงานแยกประเภท ประจำปีงบประมาณ แบบแสดงรายเดือน</h1>
+        </div>
         <div id="statusBadge" class="text-sm px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 font-medium flex items-center gap-2">กำลังโหลดข้อมูล...</div>
     </header>
     <main class="flex-1 bg-white overflow-auto p-6 print-full-width" id="printArea">
