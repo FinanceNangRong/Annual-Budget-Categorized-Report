@@ -35,6 +35,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 <span class="hidden sm:inline font-medium text-sm">ย้อนกลับ</span>
             </a>
+            <img src="https://github.com/FinanceNangRong/financial-system/raw/main/NRHOS.png" alt="NRHOS Logo" class="h-8 w-auto bg-white rounded-sm p-0.5">
             <h1 class="text-2xl font-bold">4. รายงานแยกประเภท ประจำปีงบประมาณ แบบแสดงรายเดือน</h1>
         </div>
         <div id="statusBadge" class="text-sm px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 font-medium flex items-center gap-2">กำลังโหลดข้อมูล...</div>
@@ -137,7 +138,8 @@
                 if (row._dateRecTs) {
                     const d = new Date(row._dateRecTs);
                     const monthStr = d.getMonth();
-                    const valToSum = row._e; 
+                    // แก้ไข: ดึงข้อมูลจากคอลัมน์ H (_h) มาแสดงในตารางรายเดือนตามคำขอ
+                    const valToSum = row._h; 
                     if (pivotData[cat][monthStr] !== undefined) {
                         pivotData[cat][monthStr] += valToSum;
                         pivotData[cat].total += valToSum;
@@ -202,7 +204,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex items-end mb-2 sm:mb-0 ml-auto"><p class="text-sm text-gray-500 italic"><span class="font-bold text-gray-700">* แสดงยอดตั้งหนี้</span></p></div>
+                                    <div class="flex items-end mb-2 sm:mb-0 ml-auto"><p class="text-sm text-gray-500 italic"><span class="font-bold text-gray-700">* แสดงยอดจากคอลัมน์ H</span></p></div>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +222,7 @@
                                 <th class="px-3 py-3 font-semibold text-center border border-gray-300 w-[47px] min-w-[47px] sticky left-0 z-20 bg-blue-100 print:static print:bg-blue-50">ลำดับ</th>
                                 <th class="px-4 py-3 font-semibold text-center border border-gray-300 w-[200px] min-w-[200px] max-w-[200px] sticky left-[47px] z-20 bg-blue-100 print:static print:bg-blue-50">ค่า</th>
                                 ${monthHeaders}
-                                <th class="px-3 py-3 font-bold text-center border border-gray-300 w-[114px] min-w-[114px] bg-blue-200 print:static print:bg-blue-100">รวมทั้งสิ้น</th>
+                                <th class="px-3 py-3 font-bold text-center border border-gray-300 w-[114px] min-w-[114px] bg-blue-200 print:static print:bg-blue-100">รวมทั้งสิ้น (H)</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
@@ -250,7 +252,7 @@
                         </tbody>
                         <tfoot class="bg-gray-100 border-t-4 border-gray-300 font-bold text-gray-900 sticky bottom-0 z-20">
                             <tr>
-                                <td colspan="2" class="px-4 py-3 text-right border border-gray-300 sticky left-0 z-20 bg-gray-100 print:static">รวมยอดทั้งสิ้น</td>
+                                <td colspan="2" class="px-4 py-3 text-right border border-gray-300 sticky left-0 z-20 bg-gray-100 print:static">รวมยอดทั้งสิ้น (H)</td>
                 `;
                 fiscalMonths.forEach(fm => {
                     const val = totalCols[fm.m];
