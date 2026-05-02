@@ -8,24 +8,92 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        html{font-size:90%;}body{font-family:'Noto Sans Thai',sans-serif;background-color:#f3f4f6;}
-        .print-only{display:none;}
-        @media print{
-            @page{size:A4 landscape;margin:10mm;}
-            body,html{background-color:white;height:auto!important;overflow:visible!important;display:block!important;}
-            .h-screen,.overflow-hidden,.overflow-auto,.overflow-x-auto,.flex-1,main,#printArea,#contentContainer{height:auto!important;overflow:visible!important;display:block!important;position:static!important;margin:0!important;padding:0!important;page-break-inside:auto!important;break-inside:auto!important;}
-            .shadow-sm{box-shadow:none!important;}.rounded-lg{border-radius:0!important;}
-            .no-print{display:none!important;}.print-only{display:block!important;}.print-full-width{width:100%!important;margin:0!important;padding:0!important;box-shadow:none!important;}
-            table{width:100%;border-collapse:collapse;page-break-inside:auto;}tr{page-break-inside:avoid;page-break-after:auto;}thead{display:table-header-group;}tfoot{display:table-footer-group;}
-            th,td{border:1px solid #000!important;padding:2mm 3px!important;height:auto!important;line-height:1!important;font-size:12.5px!important;}
-            th{background-color:#f3f4f6!important;-webkit-print-color-adjust:exact;font-weight:bold!important;}
-            td{font-weight:normal!important;}td.font-medium,td.font-semibold,td.font-bold{font-weight:normal!important;}
-            tfoot td{background-color:#f3f4f6!important;-webkit-print-color-adjust:exact;font-weight:bold!important;}
-            .print-fixed-table{table-layout:fixed!important;width:100%!important;max-width:100%!important;margin:0 auto!important;}
-            .print-fixed-table th,.print-fixed-table td{white-space:normal!important;word-wrap:break-word!important;overflow-wrap:break-word!important;}
-            .print-truncate{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;word-wrap:normal!important;overflow-wrap:normal!important;}
+        html { font-size: 90%; }
+        body { 
+            font-family: 'Noto Sans Thai', sans-serif; 
+            background-color: #f3f4f6; 
         }
-        ::-webkit-scrollbar{width:8px;height:8px;}::-webkit-scrollbar-track{background:#f1f1f1;}::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+        .print-only { display: none; }
+        
+        @media print {
+            @page { size: A4 landscape; margin: 10mm; }
+            body, html { 
+                background-color: white; 
+                height: auto !important; 
+                overflow: visible !important; 
+                display: block !important; 
+            }
+            .h-screen, .overflow-hidden, .overflow-auto, .overflow-x-auto, .flex-1, main, #printArea, #contentContainer {
+                height: auto !important; 
+                overflow: visible !important; 
+                display: block !important; 
+                position: static !important; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+                page-break-inside: auto !important; 
+                break-inside: auto !important;
+            }
+            .shadow-sm { box-shadow: none !important; }
+            .rounded-lg { border-radius: 0 !important; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .print-full-width { 
+                width: 100% !important; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+                box-shadow: none !important; 
+            }
+            table { 
+                width: 100%; 
+                border-collapse: collapse; 
+                page-break-inside: auto; 
+            }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            thead { display: table-header-group; }
+            tfoot { display: table-footer-group; }
+            th, td { 
+                border: 1px solid #000 !important; 
+                padding: 2mm 3px !important; 
+                height: auto !important; 
+                line-height: 1 !important; 
+                font-size: 12.5px !important; 
+            }
+            th { 
+                background-color: #f3f4f6 !important; 
+                -webkit-print-color-adjust: exact; 
+                font-weight: bold !important; 
+            }
+            td { font-weight: normal !important; }
+            td.font-medium, td.font-semibold, td.font-bold { font-weight: normal !important; }
+            tfoot td { 
+                background-color: #f3f4f6 !important; 
+                -webkit-print-color-adjust: exact; 
+                font-weight: bold !important; 
+            }
+            .print-fixed-table { 
+                table-layout: fixed !important; 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                margin: 0 auto !important; 
+            }
+            .print-fixed-table th, .print-fixed-table td { 
+                white-space: normal !important; 
+                word-wrap: break-word !important; 
+                overflow-wrap: break-word !important; 
+            }
+            .print-truncate { 
+                white-space: nowrap !important; 
+                overflow: hidden !important; 
+                text-overflow: ellipsis !important; 
+                word-wrap: normal !important; 
+                overflow-wrap: normal !important; 
+            }
+        }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="h-screen flex flex-col overflow-hidden">
@@ -35,73 +103,306 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 <span class="hidden sm:inline font-medium text-sm">ย้อนกลับ</span>
             </a>
-            <img src="https://github.com/FinanceNangRong/financial-system/raw/main/NRHOS.png" alt="NRHOS Logo" class="h-8 w-auto bg-white rounded-sm p-0.5">
+            <img src="https://github.com/FinanceNangRong/financial-system/raw/main/NRHOS.png" alt="NRHOS Logo" class="h-8 w-auto bg-white rounded-sm p-0.5" onerror="this.style.display='none'">
             <h1 class="text-2xl font-bold">4. รายงานแยกประเภท ประจำปีงบประมาณ แบบแสดงรายเดือน</h1>
         </div>
         <div id="statusBadge" class="text-sm px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 font-medium flex items-center gap-2">กำลังโหลดข้อมูล...</div>
     </header>
+    
     <main class="flex-1 bg-white overflow-auto p-6 print-full-width" id="printArea">
         <div id="contentContainer" class="max-w-7xl mx-auto">
-            <div class="text-center text-gray-400 mt-20 no-print">กำลังโหลดข้อมูลอัตโนมัติ กรุณารอสักครู่...</div>
+            <div id="filterSection" class="hidden flex-col justify-between items-start mb-6 gap-4 no-print">
+                <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                    <div class="flex-1 w-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">4. รายงานแยกประเภท ประจำปีงบประมาณ แบบแสดงรายเดือน</h3>
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm space-y-4">
+                            <div class="flex flex-col sm:flex-row gap-6">
+                                <div class="flex flex-col items-start gap-2">
+                                    <label class="text-gray-700 font-medium whitespace-nowrap">ปีงบประมาณ:</label>
+                                    <select id="fiscalYearSelect" onchange="changeFiscalYear12(this.value)" class="border border-gray-300 rounded-lg px-4 py-2 bg-white text-gray-800 shadow-sm focus:outline-none w-full sm:w-48 cursor-pointer font-medium">
+                                        <!-- Options injected by JS -->
+                                    </select>
+                                </div>
+                                <div class="hidden sm:block w-px bg-gray-300 self-stretch"></div>
+                                <div class="flex flex-col items-start gap-2 flex-1">
+                                    <label class="text-gray-700 font-medium">เลือกค่า (หมวดหมู่):</label>
+                                    <div class="relative text-left w-full sm:w-80">
+                                        <button type="button" id="catDropdownBtn12" onclick="toggleReport12Dropdown()" class="border border-gray-300 rounded-lg px-4 py-2 bg-white text-gray-800 shadow-sm flex items-center justify-between w-full focus:outline-none">
+                                            <span id="catDropdownBtnText" class="truncate">-- กรุณาเลือกหมวดหมู่ --</span>
+                                            <svg class="-mr-1 ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                                        </button>
+                                        <div id="catDropdown12" class="hidden origin-top-left absolute left-0 mt-2 w-full sm:w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20">
+                                            <div class="sticky top-0 z-10 bg-white rounded-t-md shadow-sm">
+                                                <div class="px-3 py-2 border-b border-gray-200 flex justify-between bg-gray-50 rounded-t-md">
+                                                    <button type="button" onclick="selectAllCategories12()" class="text-xs font-semibold text-blue-600 hover:text-blue-800">เลือกทั้งหมด</button>
+                                                    <button type="button" onclick="clearAllCategories12()" class="text-xs font-semibold text-red-600 hover:text-red-800">ล้าง</button>
+                                                </div>
+                                                <div class="p-2 border-b border-gray-200">
+                                                    <input type="text" placeholder="พิมพ์ค้นหาค่า..." oninput="filterDropdownOptions('catListContainer12', this.value)" class="w-full border border-gray-300 rounded px-2 py-1.5 text-sm outline-none">
+                                                </div>
+                                            </div>
+                                            <div id="catListContainer12" class="py-1 max-h-48 overflow-y-auto px-3">
+                                                <!-- Checkboxes injected by JS -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-end mb-2 sm:mb-0 ml-auto">
+                                    <p class="text-sm text-gray-500 italic"><span class="font-bold text-gray-700">* แสดงยอดจากคอลัมน์ H</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="window.print()" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow flex items-center gap-2 mt-4 md:mt-0 h-fit">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg> พิมพ์รายงาน
+                    </button>
+                </div>
+            </div>
+            
+            <div id="tableContainer">
+                <div class="text-center text-gray-400 mt-20 no-print" id="loadingText">กำลังโหลดข้อมูลอัตโนมัติ กรุณารอสักครู่...</div>
+            </div>
         </div>
     </main>
 
     <script>
-        const GOOGLE_SHEET_CSV_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vT-vY0-Ic04efRHyFptGVLR3UCipBUBhJiFSCWl_3RDAbQP6cUdQaz53D_1Sru3rg/pub?output=csv";
-        let appData=[];
+        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-vY0-Ic04efRHyFptGVLR3UCipBUBhJiFSCWl_3RDAbQP6cUdQaz53D_1Sru3rg/pub?output=csv";
+        let appData = [];
         
         let selectedCategories_forReport12 = []; 
         let currentAvailableCategories12 = []; 
         let report12DropdownOpen = false;
         let selectedFiscalYear_forReport12 = "";
 
-        function updateStatus(s){const b=document.getElementById('statusBadge');if(b){b.className=`text-sm px-3 py-1 rounded-full ${s?'bg-emerald-100 text-emerald-800':'bg-red-100 text-red-800'} font-medium flex items-center gap-2`;b.innerHTML=`<span class="relative flex h-3 w-3"><span class="relative inline-flex rounded-full h-3 w-3 ${s?'bg-emerald-500':'bg-red-500'}"></span></span>${s?'ข้อมูลพร้อมใช้งาน':'โหลดล้มเหลว'}`;}}
-        function parseNumberValue(v){if(!v)return 0;if(typeof v==='string')v=v.replace(/,/g,'');const n=parseFloat(v);return isNaN(n)?0:n;}
-        function formatNumber(n){const v=parseFloat(n);return (isNaN(v)||v===0)?'0.00':v.toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});}
-        function getJSDate(v){if(!v)return null;if(typeof v==='number')return new Date(new Date(Date.UTC(1899,11,30)).getTime()+v*86400000);const p=String(v).trim().split(/[-/]/);if(p.length===3){let d=parseInt(p[0]),m=parseInt(p[1])-1,y=parseInt(p[2]);if(p[0].length===4){y=parseInt(p[0]);m=parseInt(p[1])-1;d=parseInt(p[2]);}if(y<100)y+=y>=50?2500:2000;if(y>2400)y-=543;return new Date(y,m,d);}return isNaN(new Date(v).getTime())?null:new Date(v);}
-        const parseDateForFilter=(s)=>{if(!s||String(s).trim()==='-'||String(s).trim()==='')return null;let c=String(s).trim();const p=c.split(/[\/\-]/);if(p.length===3){let d=parseInt(p[0],10),m=parseInt(p[1],10)-1,y=parseInt(p[2],10);if(p[0].length===4){y=parseInt(p[0],10);m=parseInt(p[1],10)-1;d=parseInt(p[2],10);}if(y<100)y+=y>40?2500:2000;if(y>=2400)y-=543;let dObj=new Date(y,m,d);if(!isNaN(dObj.getTime()))return dObj.getTime();}const tS=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'],tF=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],tM=c.match(/(\d{1,2})\s+([ก-๙\.]+)\s+(\d{2,4})/);if(tM){let d=parseInt(tM[1],10),mo=tM[2],y=parseInt(tM[3],10),m=tS.findIndex(t=>mo.includes(t));if(m===-1)m=tF.findIndex(t=>mo.includes(t));if(m===-1)m=0;if(y<100)y+=y>40?2500:2000;if(y>=2400)y-=543;return new Date(y,m,d).getTime();}if(!isNaN(c)&&Number(c)>10000)return new Date(Date.UTC(1899,11,30)).getTime()+Number(c)*86400000;let dObj=new Date(c);return isNaN(dObj.getTime())?null:dObj.getTime();};
-        function formatThaiDate(v,s=false){if(!v)return '-';let d,m,y;if(typeof v==='number'){const doObj=new Date(new Date(Date.UTC(1899,11,30)).getTime()+v*86400000);d=doObj.getUTCDate();m=doObj.getUTCMonth()+1;y=doObj.getUTCFullYear();if(y<2500)y+=543;}else{let ds=String(v).trim();const p=ds.split(/[-/]/);if(p.length===3){d=parseInt(p[0]);m=parseInt(p[1]);y=parseInt(p[2]);if(p[0].length===4){y=parseInt(p[0]);m=parseInt(p[1]);d=parseInt(p[2]);}if(!isNaN(d)&&!isNaN(m)&&!isNaN(y)){if(y<100)y+=y>=50?2500:2000;if(y<2500)y+=543;}else return ds;}else return ds;}return `${String(d).padStart(2,'0')}/${String(m).padStart(2,'0')}/${s?String(y).slice(-2):y}`;}
-        function formatThaiDateShort(v){if(!v)return '-';const jd=getJSDate(v);if(!jd)return String(v);const tS=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];return `${jd.getDate()} ${tS[jd.getMonth()]} ${String(jd.getFullYear()).slice(-2)}`;}
-        function filterDropdownOptions(i,t){const c=document.getElementById(i);if(!c)return;const ls=c.getElementsByTagName('label'),f=t.toLowerCase().replace(/\s+/g,'');for(let j=0;j<ls.length;j++){const s=ls[j].querySelector('span');if(s)ls[j].style.display=(s.textContent||s.innerText).toLowerCase().replace(/\s+/g,'').indexOf(f)>-1?"":"none";}}
-        function enrichData(rows){return rows.map(r=>{r._e=parseNumberValue(r[4]);r._f=parseNumberValue(r[5]);r._g=parseNumberValue(r[6]);r._h=parseNumberValue(r[7]);r._compC=String(r[2]||'').trim();r._compCSearch=r._compC.toLowerCase().replace(/\s+/g,'');r._invD=r[3]||'-';r._valM=String(r[12]||'').trim()||'ไม่ระบุหมวดหมู่';r._dept=String(r[13]||'').trim();r._status=String(r[22]||'').trim();r._taxId=String(r[21]||'').trim();r._dateRecTs=parseDateForFilter(r[1]);r._datePayTs=parseDateForFilter(r[8]);let jd=getJSDate(r[23]);r._dateProcessTs=jd?jd.getTime():null;r._dateRecStr=formatThaiDate(r[1]);r._datePayStr=formatThaiDate(r[8]);r._dateProcessStr=formatThaiDate(r[23],true);r._dateProcessStrShort=formatThaiDateShort(r[23]);return r;});}
+        function updateStatus(success) {
+            const badge = document.getElementById('statusBadge');
+            if (badge) {
+                badge.className = `text-sm px-3 py-1 rounded-full ${success ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'} font-medium flex items-center gap-2`;
+                badge.innerHTML = `<span class="relative flex h-3 w-3"><span class="relative inline-flex rounded-full h-3 w-3 ${success ? 'bg-emerald-500' : 'bg-red-500'}"></span></span>${success ? 'ข้อมูลพร้อมใช้งาน' : 'โหลดล้มเหลว'}`;
+            }
+        }
+
+        function parseNumberValue(v) {
+            if (!v) return 0;
+            if (typeof v === 'string') v = v.replace(/,/g, '');
+            const n = parseFloat(v);
+            return isNaN(n) ? 0 : n;
+        }
+
+        function formatNumber(n) {
+            const v = parseFloat(n);
+            return (isNaN(v) || v === 0) ? '0.00' : v.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function getJSDate(v) {
+            if (!v) return null;
+            if (typeof v === 'number') return new Date(new Date(Date.UTC(1899, 11, 30)).getTime() + v * 86400000);
+            
+            const p = String(v).trim().split(/[-/]/);
+            if (p.length === 3) {
+                let d = parseInt(p[0]), m = parseInt(p[1]) - 1, y = parseInt(p[2]);
+                if (p[0].length === 4) {
+                    y = parseInt(p[0]); m = parseInt(p[1]) - 1; d = parseInt(p[2]);
+                }
+                if (y < 100) y += y >= 50 ? 2500 : 2000;
+                if (y > 2400) y -= 543;
+                return new Date(y, m, d);
+            }
+            return isNaN(new Date(v).getTime()) ? null : new Date(v);
+        }
+
+        const parseDateForFilter = (s) => {
+            if (!s || String(s).trim() === '-' || String(s).trim() === '') return null;
+            let c = String(s).trim();
+            
+            const p = c.split(/[\/\-]/);
+            if (p.length === 3) {
+                let d = parseInt(p[0], 10), m = parseInt(p[1], 10) - 1, y = parseInt(p[2], 10);
+                if (p[0].length === 4) {
+                    y = parseInt(p[0], 10); m = parseInt(p[1], 10) - 1; d = parseInt(p[2], 10);
+                }
+                if (y < 100) y += y > 40 ? 2500 : 2000;
+                if (y >= 2400) y -= 543;
+                let dObj = new Date(y, m, d);
+                if (!isNaN(dObj.getTime())) return dObj.getTime();
+            }
+            
+            const tS = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+            const tF = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+            const tM = c.match(/(\d{1,2})\s+([ก-๙\.]+)\s+(\d{2,4})/);
+            
+            if (tM) {
+                let d = parseInt(tM[1], 10), mo = tM[2], y = parseInt(tM[3], 10);
+                let m = tS.findIndex(t => mo.includes(t));
+                if (m === -1) m = tF.findIndex(t => mo.includes(t));
+                if (m === -1) m = 0;
+                if (y < 100) y += y > 40 ? 2500 : 2000;
+                if (y >= 2400) y -= 543;
+                return new Date(y, m, d).getTime();
+            }
+            
+            if (!isNaN(c) && Number(c) > 10000) {
+                return new Date(Date.UTC(1899, 11, 30)).getTime() + Number(c) * 86400000;
+            }
+            
+            let dObj = new Date(c);
+            return isNaN(dObj.getTime()) ? null : dObj.getTime();
+        };
+
+        function formatThaiDate(v, s = false) {
+            if (!v) return '-';
+            let d, m, y;
+            if (typeof v === 'number') {
+                const doObj = new Date(new Date(Date.UTC(1899, 11, 30)).getTime() + v * 86400000);
+                d = doObj.getUTCDate();
+                m = doObj.getUTCMonth() + 1;
+                y = doObj.getUTCFullYear();
+                if (y < 2500) y += 543;
+            } else {
+                let ds = String(v).trim();
+                const p = ds.split(/[-/]/);
+                if (p.length === 3) {
+                    d = parseInt(p[0]); m = parseInt(p[1]); y = parseInt(p[2]);
+                    if (p[0].length === 4) {
+                        y = parseInt(p[0]); m = parseInt(p[1]); d = parseInt(p[2]);
+                    }
+                    if (!isNaN(d) && !isNaN(m) && !isNaN(y)) {
+                        if (y < 100) y += y >= 50 ? 2500 : 2000;
+                        if (y < 2500) y += 543;
+                    } else return ds;
+                } else return ds;
+            }
+            return `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}/${s ? String(y).slice(-2) : y}`;
+        }
+
+        function formatThaiDateShort(v) {
+            if (!v) return '-';
+            const jd = getJSDate(v);
+            if (!jd) return String(v);
+            const tS = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+            return `${jd.getDate()} ${tS[jd.getMonth()]} ${String(jd.getFullYear()).slice(-2)}`;
+        }
+
+        function filterDropdownOptions(i, t) {
+            const c = document.getElementById(i);
+            if (!c) return;
+            const ls = c.getElementsByTagName('label');
+            const f = t.toLowerCase().replace(/\s+/g, '');
+            for (let j = 0; j < ls.length; j++) {
+                const s = ls[j].querySelector('span');
+                if (s) {
+                    ls[j].style.display = (s.textContent || s.innerText).toLowerCase().replace(/\s+/g, '').indexOf(f) > -1 ? "" : "none";
+                }
+            }
+        }
+
+        function enrichData(rows) {
+            return rows.map(r => {
+                r._e = parseNumberValue(r[4]);
+                r._f = parseNumberValue(r[5]);
+                r._g = parseNumberValue(r[6]);
+                r._h = parseNumberValue(r[7]);
+                r._compC = String(r[2] || '').trim();
+                r._compCSearch = r._compC.toLowerCase().replace(/\s+/g, '');
+                r._invD = r[3] || '-';
+                r._valM = String(r[12] || '').trim() || 'ไม่ระบุหมวดหมู่';
+                r._dept = String(r[13] || '').trim();
+                r._status = String(r[22] || '').trim();
+                r._taxId = String(r[21] || '').trim();
+                
+                r._dateRecTs = parseDateForFilter(r[1]);
+                r._datePayTs = parseDateForFilter(r[8]);
+                
+                let jd = getJSDate(r[23]);
+                r._dateProcessTs = jd ? jd.getTime() : null;
+                
+                r._dateRecStr = formatThaiDate(r[1]);
+                r._datePayStr = formatThaiDate(r[8]);
+                r._dateProcessStr = formatThaiDate(r[23], true);
+                r._dateProcessStrShort = formatThaiDateShort(r[23]);
+                
+                return r;
+            });
+        }
 
         // Logic Report 4
         function getFiscalYear(dateTs) {
             if (!dateTs) return null;
             const d = new Date(dateTs);
             let y = d.getFullYear(); 
+            // ปีงบประมาณไทย เริ่ม 1 ตุลาคม (เดือน 9 ใน JS Date)
             if (d.getMonth() >= 9) y += 1; 
             return String(y + 543);
         }
+
         function toggleReport12Dropdown() {
             report12DropdownOpen = !report12DropdownOpen;
             const dd = document.getElementById('catDropdown12');
-            if (dd) report12DropdownOpen ? dd.classList.remove('hidden') : dd.classList.add('hidden');
+            if (dd) {
+                report12DropdownOpen ? dd.classList.remove('hidden') : dd.classList.add('hidden');
+            }
         }
-        function selectAllCategories12() { selectedCategories_forReport12 = [...currentAvailableCategories12]; renderReport12(document.getElementById('contentContainer')); }
-        function clearAllCategories12() { selectedCategories_forReport12 = []; renderReport12(document.getElementById('contentContainer')); }
+
+        function updateCategoryButtonText() {
+            const btnText = document.getElementById('catDropdownBtnText');
+            if (btnText) {
+                btnText.textContent = selectedCategories_forReport12.length > 0 
+                    ? selectedCategories_forReport12.join(', ') 
+                    : '-- กรุณาเลือกหมวดหมู่ --';
+            }
+        }
+
+        function selectAllCategories12() { 
+            selectedCategories_forReport12 = [...currentAvailableCategories12]; 
+            const checkboxes = document.querySelectorAll('.category-checkbox');
+            checkboxes.forEach(cb => cb.checked = true);
+            updateCategoryButtonText();
+            renderTable(); 
+        }
+
+        function clearAllCategories12() { 
+            selectedCategories_forReport12 = []; 
+            const checkboxes = document.querySelectorAll('.category-checkbox');
+            checkboxes.forEach(cb => cb.checked = false);
+            updateCategoryButtonText();
+            renderTable(); 
+        }
+
         function updateReport12CategoryFilter(val, isChecked) {
-            if (isChecked) { if (!selectedCategories_forReport12.includes(val)) selectedCategories_forReport12.push(val); }
-            else { selectedCategories_forReport12 = selectedCategories_forReport12.filter(item => item !== val); }
-            renderReport12(document.getElementById('contentContainer'));
+            if (isChecked) { 
+                if (!selectedCategories_forReport12.includes(val)) selectedCategories_forReport12.push(val); 
+            } else { 
+                selectedCategories_forReport12 = selectedCategories_forReport12.filter(item => item !== val); 
+            }
+            updateCategoryButtonText();
+            renderTable();
         }
-        function changeFiscalYear12(val) { selectedFiscalYear_forReport12 = val; renderReport12(document.getElementById('contentContainer')); }
+
+        function changeFiscalYear12(val) { 
+            selectedFiscalYear_forReport12 = val; 
+            renderTable(); 
+        }
+
         window.addEventListener('click', function(e) {
-            const dd = document.getElementById('catDropdown12'), btn = document.getElementById('catDropdownBtn12');
+            const dd = document.getElementById('catDropdown12');
+            const btn = document.getElementById('catDropdownBtn12');
             if (dd && btn && report12DropdownOpen && !dd.contains(e.target) && !btn.contains(e.target)) {
-                report12DropdownOpen = false; dd.classList.add('hidden');
+                report12DropdownOpen = false; 
+                dd.classList.add('hidden');
             }
         });
 
-        function renderReport12(container) {
+        function setupFilters() {
             const uniqueCategoriesSet = new Set();
             const uniqueFYsSet = new Set();
+            
             appData.forEach(row => {
                 if (row._e === 0 && row._f === 0 && row._g === 0 && row._h === 0) return;
                 uniqueCategoriesSet.add(row._valM);
                 const fy = getFiscalYear(row._dateRecTs);
                 if (fy) uniqueFYsSet.add(fy);
             });
+            
             currentAvailableCategories12 = [...uniqueCategoriesSet].sort();
             const uniqueFYs = [...uniqueFYsSet].sort((a, b) => Number(b) - Number(a));
 
@@ -110,6 +411,45 @@
                 selectedFiscalYear_forReport12 = uniqueFYs.length > 0 ? uniqueFYs[0] : "";
                 window.report12Initialized = true;
             }
+
+            const fySelect = document.getElementById('fiscalYearSelect');
+            if(fySelect) {
+                let fyOptions = `<option value="">-- แสดงทุกปีงบประมาณ --</option>`;
+                uniqueFYs.forEach(fy => {
+                    fyOptions += `<option value="${fy}" ${selectedFiscalYear_forReport12 === fy ? 'selected' : ''}>${fy}</option>`;
+                });
+                fySelect.innerHTML = fyOptions;
+            }
+
+            const catList = document.getElementById('catListContainer12');
+            if(catList) {
+                if (currentAvailableCategories12.length > 0) {
+                    catList.innerHTML = currentAvailableCategories12.map(cat => `
+                        <label class="flex items-center py-2 cursor-pointer hover:bg-gray-50 border-b border-gray-100 last:border-0">
+                            <input type="checkbox" value="${cat}" ${selectedCategories_forReport12.includes(cat) ? 'checked' : ''} class="category-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded mr-3">
+                            <span class="text-sm text-gray-700">${cat}</span>
+                        </label>
+                    `).join('');
+                    
+                    const checkboxes = catList.querySelectorAll('.category-checkbox');
+                    checkboxes.forEach(cb => {
+                        cb.addEventListener('change', (e) => {
+                            updateReport12CategoryFilter(e.target.value, e.target.checked);
+                        });
+                    });
+                } else {
+                    catList.innerHTML = '<div class="py-2 text-sm text-gray-500">ไม่พบหมวดหมู่</div>';
+                }
+            }
+
+            document.getElementById('filterSection').classList.remove('hidden');
+            document.getElementById('filterSection').classList.add('flex');
+            updateCategoryButtonText();
+        }
+
+        function renderTable() {
+            const container = document.getElementById('tableContainer');
+            if (!container) return;
 
             let filteredData12 = appData.filter(row => {
                 if (row._e === 0 && row._f === 0 && row._g === 0 && row._h === 0) return false;
@@ -126,6 +466,7 @@
                 { m: 3, label: 'เม.ย.' }, { m: 4, label: 'พ.ค.' }, { m: 5, label: 'มิ.ย.' },
                 { m: 6, label: 'ก.ค.' }, { m: 7, label: 'ส.ค.' }, { m: 8, label: 'ก.ย.' }
             ];
+            
             let totalCols = { total: 0 };
             fiscalMonths.forEach(fm => totalCols[fm.m] = 0);
 
@@ -138,7 +479,6 @@
                 if (row._dateRecTs) {
                     const d = new Date(row._dateRecTs);
                     const monthStr = d.getMonth();
-                    // แก้ไข: ดึงข้อมูลจากคอลัมน์ H (_h) มาแสดงในตารางรายเดือนตามคำขอ
                     const valToSum = row._h; 
                     if (pivotData[cat][monthStr] !== undefined) {
                         pivotData[cat][monthStr] += valToSum;
@@ -150,7 +490,9 @@
             });
 
             let printTitle = "รายงานแยกประเภท ประจำปีงบประมาณ แบบสรุปรายเดือน";
-            if (selectedFiscalYear_forReport12) printTitle += ` ประจำปีงบประมาณ ${selectedFiscalYear_forReport12}`;
+            if (selectedFiscalYear_forReport12) {
+                printTitle += ` ประจำปีงบประมาณ ${selectedFiscalYear_forReport12}`;
+            }
 
             let monthHeaders = '';
             fiscalMonths.forEach(fm => {
@@ -163,58 +505,8 @@
                 monthHeaders += `<th class="px-2 py-3 font-semibold text-center border border-gray-300 w-[95px] min-w-[95px] whitespace-nowrap bg-blue-100 print:static print:bg-blue-50">${fm.label}${yearLabel}</th>`;
             });
 
-            let headerHTML = `
-                <div class="flex flex-col justify-between items-start mb-6 gap-4 no-print">
-                    <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-                        <div class="flex-1 w-full">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">4. รายงานแยกประเภท ประจำปีงบประมาณ แบบแสดงรายเดือน</h3>
-                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm space-y-4">
-                                <div class="flex flex-col sm:flex-row gap-6">
-                                    <div class="flex flex-col items-start gap-2">
-                                        <label class="text-gray-700 font-medium whitespace-nowrap">ปีงบประมาณ:</label>
-                                        <select onchange="changeFiscalYear12(this.value)" class="border border-gray-300 rounded-lg px-4 py-2 bg-white text-gray-800 shadow-sm focus:outline-none w-full sm:w-48 cursor-pointer font-medium">
-                                            <option value="">-- แสดงทุกปีงบประมาณ --</option>
-                                            ${uniqueFYs.map(fy => `<option value="${fy}" ${selectedFiscalYear_forReport12 === fy ? 'selected' : ''}>${fy}</option>`).join('')}
-                                        </select>
-                                    </div>
-                                    <div class="hidden sm:block w-px bg-gray-300 self-stretch"></div>
-                                    <div class="flex flex-col items-start gap-2 flex-1">
-                                        <label class="text-gray-700 font-medium">เลือกค่า (หมวดหมู่):</label>
-                                        <div class="relative text-left w-full sm:w-80">
-                                            <button type="button" id="catDropdownBtn12" onclick="toggleReport12Dropdown()" class="border border-gray-300 rounded-lg px-4 py-2 bg-white text-gray-800 shadow-sm flex items-center justify-between w-full focus:outline-none">
-                                                <span class="truncate">${selectedCategories_forReport12.length > 0 ? selectedCategories_forReport12.join(', ') : '-- กรุณาเลือกหมวดหมู่ --'}</span>
-                                                <svg class="-mr-1 ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                                            </button>
-                                            <div id="catDropdown12" class="${report12DropdownOpen ? '' : 'hidden'} origin-top-left absolute left-0 mt-2 w-full sm:w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20">
-                                                <div class="sticky top-0 z-10 bg-white rounded-t-md shadow-sm">
-                                                    <div class="px-3 py-2 border-b border-gray-200 flex justify-between bg-gray-50 rounded-t-md">
-                                                        <button type="button" onclick="selectAllCategories12()" class="text-xs font-semibold text-blue-600">เลือกทั้งหมด</button>
-                                                        <button type="button" onclick="clearAllCategories12()" class="text-xs font-semibold text-red-600">ล้าง</button>
-                                                    </div>
-                                                    <div class="p-2 border-b border-gray-200"><input type="text" placeholder="พิมพ์ค้นหาค่า..." oninput="filterDropdownOptions('catListContainer12', this.value)" class="w-full border border-gray-300 rounded px-2 py-1.5 text-sm outline-none"></div>
-                                                </div>
-                                                <div id="catListContainer12" class="py-1 max-h-48 overflow-y-auto px-3">
-                                                    ${currentAvailableCategories12.length > 0 ? currentAvailableCategories12.map(cat => `
-                                                        <label class="flex items-center py-2 cursor-pointer hover:bg-gray-50 border-b border-gray-100 last:border-0">
-                                                            <input type="checkbox" value="${cat}" ${selectedCategories_forReport12.includes(cat) ? 'checked' : ''} onchange="updateReport12CategoryFilter(this.value, this.checked)" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded mr-3">
-                                                            <span class="text-sm text-gray-700">${cat}</span>
-                                                        </label>
-                                                    `).join('') : '<div class="py-2 text-sm text-gray-500">ไม่พบหมวดหมู่</div>'}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-end mb-2 sm:mb-0 ml-auto"><p class="text-sm text-gray-500 italic"><span class="font-bold text-gray-700">* แสดงยอดจากคอลัมน์ H</span></p></div>
-                                </div>
-                            </div>
-                        </div>
-                        <button onclick="window.print()" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow flex items-center gap-2 mt-4 md:mt-0 h-fit"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg> พิมพ์รายงาน</button>
-                    </div>
-                </div>
+            let html = `
                 <h3 class="text-xl font-bold text-center mb-4 print-only">${printTitle}</h3>
-            `;
-
-            let tableHTML = `
                 <div class="overflow-x-auto bg-white rounded-lg border border-gray-200 shadow-sm" style="max-height: 70vh;">
                     <table class="min-w-full text-sm text-left border-collapse print-fixed-table" style="table-layout: auto;">
                         <thead class="bg-blue-100 text-blue-900 border-b-2 border-gray-300">
@@ -231,48 +523,56 @@
             const catKeys = Object.keys(pivotData).sort();
 
             if (catKeys.length === 0) {
-                tableHTML += `<tr><td colspan="15" class="px-4 py-8 text-center text-gray-500">ไม่พบข้อมูลตามเงื่อนไขที่เลือก หรือยังไม่ได้เลือกหมวดหมู่</td></tr></tbody>`;
+                html += `<tr><td colspan="15" class="px-4 py-8 text-center text-gray-500">ไม่พบข้อมูลตามเงื่อนไขที่เลือก หรือยังไม่ได้เลือกหมวดหมู่</td></tr></tbody>`;
             } else {
                 let index = 1;
                 catKeys.forEach(catKey => {
                     const rowData = pivotData[catKey];
-                    tableHTML += `
+                    html += `
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="px-3 py-2 text-center text-gray-500 border border-gray-200 sticky left-0 z-10 bg-white print:static">${index++}</td>
                             <td class="px-4 py-2 text-gray-800 font-medium border border-gray-200 sticky left-[47px] z-10 bg-white print:static truncate print-truncate w-[200px] max-w-[200px]" title="${catKey}">${catKey}</td>
                     `;
                     fiscalMonths.forEach(fm => {
                         const val = rowData[fm.m];
-                        tableHTML += `<td class="px-2 py-2 text-right text-gray-700 border border-gray-200 w-[95px] min-w-[95px]">${val !== 0 ? formatNumber(val) : ''}</td>`;
+                        html += `<td class="px-2 py-2 text-right text-gray-700 border border-gray-200 w-[95px] min-w-[95px]">${val !== 0 ? formatNumber(val) : ''}</td>`;
                     });
-                    tableHTML += `<td class="px-2 py-2 text-right text-blue-700 font-bold border border-gray-200 bg-blue-50/30 print:bg-transparent w-[114px] min-w-[114px]">${formatNumber(rowData.total)}</td></tr>`;
+                    html += `<td class="px-2 py-2 text-right text-blue-700 font-bold border border-gray-200 bg-blue-50/30 print:bg-transparent w-[114px] min-w-[114px]">${formatNumber(rowData.total)}</td></tr>`;
                 });
 
-                tableHTML += `
+                html += `
                         </tbody>
                         <tfoot class="bg-gray-100 border-t-4 border-gray-300 font-bold text-gray-900 sticky bottom-0 z-20">
                             <tr>
                                 <td colspan="2" class="px-4 py-3 text-right border border-gray-300 sticky left-0 z-20 bg-gray-100 print:static">รวมยอดทั้งสิ้น (H)</td>
                 `;
+                
                 fiscalMonths.forEach(fm => {
                     const val = totalCols[fm.m];
-                    tableHTML += `<td class="px-2 py-3 text-right border border-gray-300 bg-gray-100 w-[95px] min-w-[95px]">${val !== 0 ? formatNumber(val) : '-'}</td>`;
+                    html += `<td class="px-2 py-3 text-right border border-gray-300 bg-gray-100 w-[95px] min-w-[95px]">${val !== 0 ? formatNumber(val) : '-'}</td>`;
                 });
-                tableHTML += `<td class="px-2 py-3 text-right text-blue-900 border border-gray-300 bg-gray-200 print:bg-transparent w-[114px] min-w-[114px]">${formatNumber(totalCols.total)}</td></tr></tfoot>`;
+                html += `<td class="px-2 py-3 text-right text-blue-900 border border-gray-300 bg-gray-200 print:bg-transparent w-[114px] min-w-[114px]">${formatNumber(totalCols.total)}</td></tr></tfoot>`;
             }
-            container.innerHTML = headerHTML + tableHTML + `</table></div>`;
+            html += `</table></div>`;
+            container.innerHTML = html;
         }
 
-        // Init
+        // Init App
         document.addEventListener('DOMContentLoaded', () => {
             Papa.parse(GOOGLE_SHEET_CSV_URL, {
-                download: true, header: false,
+                download: true, 
+                header: false,
                 complete: function(results) {
                     if(results.data.length < 5) return updateStatus(false);
-                    appData = enrichData(results.data.slice(4).filter(r => r.length>0 && r.some(c=>c!=="")));
+                    // ข้ามหัวตาราง 4 แถวแรก
+                    appData = enrichData(results.data.slice(4).filter(r => r.length > 0 && r.some(c => c !== "")));
                     updateStatus(true);
-                    renderReport12(document.getElementById('contentContainer'));
-                }, error: function() { updateStatus(false); }
+                    setupFilters();
+                    renderTable();
+                }, 
+                error: function() { 
+                    updateStatus(false); 
+                }
             });
         });
     </script>
